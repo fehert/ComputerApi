@@ -1,4 +1,7 @@
 using ComputerApi.Models;
+using Google.Protobuf.WellKnownTypes;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 namespace ComputerApi
 {
@@ -7,7 +10,11 @@ namespace ComputerApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddDbContext<ComputerContext>();
+            builder.Services.AddDbContext<ComputerContext>(Option =>
+            {
+                var connectionString = builder.Configuration.GetConnectionString("MySql");
+                Option.UseMySQL(connectionString);
+            });
 
             // Add services to the container.
 

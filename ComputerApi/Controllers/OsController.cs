@@ -16,7 +16,7 @@ namespace ComputerApi.Controllers
             this.computerContext = computerContext;
         }
         [HttpPost]
-        public ActionResult<Os> Post(CreateOsDto createOsDto)
+        public async Task <ActionResult<Os>> Post(CreateOsDto createOsDto)
         {
             var os = new Os
             {
@@ -25,8 +25,8 @@ namespace ComputerApi.Controllers
             };
             if (os != null)
             {
-                computerContext.Os.Add(os);
-                computerContext.SaveChanges();
+               await computerContext.Os.AddAsync(os);
+               await computerContext.SaveChangesAsync();
                 return StatusCode(201, os);
             }
             return BadRequest();
