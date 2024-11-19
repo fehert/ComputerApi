@@ -1,3 +1,4 @@
+using ComputerApi.Models;
 
 namespace ComputerApi
 {
@@ -6,6 +7,7 @@ namespace ComputerApi
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddDbContext<ComputerContext>();
 
             // Add services to the container.
 
