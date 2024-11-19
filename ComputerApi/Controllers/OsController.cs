@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ComputerApi.Controllers
 {
@@ -31,5 +32,43 @@ namespace ComputerApi.Controllers
             }
             return BadRequest();
         }
+        [HttpGet]
+        public async Task<ActionResult<Os>> Get()
+        {
+            return Ok( await computerContext.Os.ToListAsync());
+
+        }
+        [HttpGet("Id")]
+        public async Task<ActionResult<Os>> Get(Guid Id)
+        {
+            return Ok(await computerContext.Os.FirstOrDefaultAsync(o => o.Id == Id));
+        }
+        [HttpPut]
+        public async Task<ActionResult<Os>> Put(UpdateOsDto updateOsDto,Guid Id)
+        {
+            var existingos =  await computerContext.Os.FirstOrDefaultAsync(o => o.Id == Id);
+            if (existingos != null)
+            { 
+                existingos.Name = updateOsDto.name;
+                computerContext.Os.Update(existingos);
+                computerContext.SaveChanges();
+                return StatusCode(200, existingos);
+             }
+            return BadRequest();
+        }
+        [HttpDelete]
+        public async Task<ActionResult<Os>> Delete(Guid Id)
+        {
+            var existingos = await computerContext.Os.FirstOrDefaultAsync(o => o.Id == Id);
+            if (existingos != null)
+            {
+                computerContext.Remove(existingos);
+                computerContext.SaveChanges();
+                return StatusCode(200);
+            }
+            return BadRequest();
+        }
+        }
+
     }
-}
+
