@@ -74,5 +74,17 @@ namespace ComputerApi.Controllers
             }
             return StatusCode(404);
         }
+        [HttpDelete]
+        public async Task<ActionResult> Delete(Guid id)
+        {
+            var comp = await computerContext.Comps.FirstOrDefaultAsync(x => id == x.Id);
+            if (comp != null)
+            {
+                computerContext.Comps.Remove(comp);
+                await computerContext.SaveChangesAsync();
+                return Ok();
+            }
+            return NotFound();
+        }
     }
 }
