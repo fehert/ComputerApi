@@ -54,5 +54,25 @@ namespace ComputerApi.Controllers
 
             return BadRequest();
         }
+        [HttpPut]
+        public async Task<ActionResult<Comp>> Put(UpdateCompDto updateCompDto, Guid id)
+        {
+
+            var existingComp = await computerContext.Comps.FirstOrDefaultAsync(x => id == x.Id);
+
+            if (existingComp != null)
+            {
+                existingComp.Brand = updateCompDto.Brand;
+                existingComp.Type = updateCompDto.Type;
+                existingComp.Display = updateCompDto.Display;
+                existingComp.Memory = updateCompDto.Memory;
+                existingComp.OsId = updateCompDto.OsId;
+
+                computerContext.Comps.Update(existingComp);
+                await computerContext.SaveChangesAsync();
+                return StatusCode(200, existingComp);
+            }
+            return StatusCode(404);
+        }
     }
 }
