@@ -17,7 +17,7 @@ public partial class Comp
 
     public DateTime CreatedTime { get; set; }
 
-    public Guid OdId { get; set; }
+    public Guid OsId { get; set; }
 
     public virtual Os Os { get; set; } = null!;
 }
