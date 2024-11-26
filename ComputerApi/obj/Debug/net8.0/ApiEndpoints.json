@@ -119,6 +119,36 @@
     ]
   },
   {
+    "ContainingType": "ComputerApi.Controllers.CompController",
+    "Method": "Isitwindows",
+    "RelativePath": "api/Comp/isitwindows",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "ComputerApi.Models.Comp",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "ComputerApi.Controllers.CompController",
+    "Method": "Numberofcomputers",
+    "RelativePath": "api/Comp/numberofcomputers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ComputerApi.Controllers.OsController",
     "Method": "Post",
     "RelativePath": "api/Os",
