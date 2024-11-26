@@ -66,7 +66,7 @@ namespace ComputerApi.Controllers
                 existingComp.Type = updateCompDto.Type;
                 existingComp.Display = updateCompDto.Display;
                 existingComp.Memory = updateCompDto.Memory;
-                existingComp.OsId = updateCompDto.OsId;
+                
 
                 computerContext.Comps.Update(existingComp);
                 await computerContext.SaveChangesAsync();
@@ -86,5 +86,6 @@ namespace ComputerApi.Controllers
             }
             return NotFound();
         }
+               
     }
 }

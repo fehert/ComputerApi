@@ -17,7 +17,7 @@ namespace ComputerApi.Controllers
             this.computerContext = computerContext;
         }
         [HttpPost]
-        public async Task <ActionResult<Os>> Post(CreateOsDto createOsDto)
+        public async Task<ActionResult<Os>> Post(CreateOsDto createOsDto)
         {
             var os = new Os
             {
@@ -26,8 +26,8 @@ namespace ComputerApi.Controllers
             };
             if (os != null)
             {
-               await computerContext.Os.AddAsync(os);
-               await computerContext.SaveChangesAsync();
+                await computerContext.Os.AddAsync(os);
+                await computerContext.SaveChangesAsync();
                 return StatusCode(201, os);
             }
             return BadRequest();
@@ -35,7 +35,7 @@ namespace ComputerApi.Controllers
         [HttpGet]
         public async Task<ActionResult<Os>> Get()
         {
-            return Ok( await computerContext.Os.ToListAsync());
+            return Ok(await computerContext.Os.ToListAsync());
 
         }
         [HttpGet("Id")]
@@ -44,16 +44,16 @@ namespace ComputerApi.Controllers
             return Ok(await computerContext.Os.FirstOrDefaultAsync(o => o.Id == Id));
         }
         [HttpPut]
-        public async Task<ActionResult<Os>> Put(UpdateOsDto updateOsDto,Guid Id)
+        public async Task<ActionResult<Os>> Put(UpdateOsDto updateOsDto, Guid Id)
         {
-            var existingos =  await computerContext.Os.FirstOrDefaultAsync(o => o.Id == Id);
+            var existingos = await computerContext.Os.FirstOrDefaultAsync(o => o.Id == Id);
             if (existingos != null)
-            { 
+            {
                 existingos.Name = updateOsDto.name;
                 computerContext.Os.Update(existingos);
                 computerContext.SaveChanges();
                 return StatusCode(200, existingos);
-             }
+            }
             return BadRequest();
         }
         [HttpDelete]
@@ -68,7 +68,13 @@ namespace ComputerApi.Controllers
             }
             return BadRequest();
         }
+        [HttpGet("withallcomputer")]
+        public async Task<ActionResult<Os>> GetWithAllComputer()
+        {
+            return Ok(await computerContext.Os.Include(os=>os.Comps).ToListAsync());
         }
 
+
     }
+}
 

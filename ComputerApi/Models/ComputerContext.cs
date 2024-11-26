@@ -27,7 +27,7 @@ public partial class ComputerContext : DbContext
 
             entity.ToTable("comp");
 
-            entity.HasIndex(e => e.OdId, "OdId");
+            entity.HasIndex(e => e.OsId, "OdId");
 
             entity.Property(e => e.Brand).HasMaxLength(37);
             entity.Property(e => e.CreatedTime).HasColumnType("datetime");
@@ -35,7 +35,7 @@ public partial class ComputerContext : DbContext
             entity.Property(e => e.Type).HasMaxLength(37);
 
             entity.HasOne(d => d.Os).WithMany(p => p.Comps)
-                .HasForeignKey(d => d.OdId)
+                .HasForeignKey(d => d.OsId)
                 .HasConstraintName("comp_ibfk_1");
         });
 

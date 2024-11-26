@@ -3980,19 +3980,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tamas\\.nuget\\packages\\": {}
+    "C:\\Users\\Tanulo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tamas\\source\\repos\\ComputerApi\\ComputerApi\\ComputerApi.csproj",
+      "projectUniqueName": "C:\\Users\\Tanulo\\source\\repos\\ComputerApi\\ComputerApi\\ComputerApi.csproj",
       "projectName": "ComputerApi",
-      "projectPath": "C:\\Users\\tamas\\source\\repos\\ComputerApi\\ComputerApi\\ComputerApi.csproj",
-      "packagesPath": "C:\\Users\\tamas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tamas\\source\\repos\\ComputerApi\\ComputerApi\\obj\\",
+      "projectPath": "C:\\Users\\Tanulo\\source\\repos\\ComputerApi\\ComputerApi\\ComputerApi.csproj",
+      "packagesPath": "C:\\Users\\Tanulo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Tanulo\\source\\repos\\ComputerApi\\ComputerApi\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tamas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Tanulo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
